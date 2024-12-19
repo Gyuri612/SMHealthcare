@@ -1,0 +1,10 @@
+[Exercises] 
+pilates - 520 kcal
+Total calories burned: 520 kcal 
+
+[Diets] 
+Total calories intake: 0 kcal 
+
+[Total] 
+Basal metabolic rate: 1300 kcal
+The remaining calories: -1820 kcal
