@@ -26,15 +26,15 @@ int exercise_list_size = 0;
     description : read the information in "excercises.txt"
 */
 
-void loadExercises(const char* EXERCISEFILEPATH) {
-    FILE *file = fopen(EXERCISEFILEPATH, "r");
+void loadExercises(const char* "C:\Users\gram\Documents\SMHealthcare\exercises.txt") {
+    FILE *file = fopen("C:\Users\gram\Documents\SMHealthcare\exercises.txt", "r");
     if (file == NULL) {
         printf("There is no file for exercises! \n");
         return;
     }
 
     // ToCode: to read a list of the exercises from the given file
-    while ( ) {
+    while (fscanf(file, "%s %d", exercise_list[exercise_list_size].exercise_name,)) {
     	
         if (exercise_list_size >= MAX_EXERCISES){
         	break;
