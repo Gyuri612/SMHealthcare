@@ -26,15 +26,17 @@ static int diet_list_size = 0;
     description : read the information in "diets.txt"
 */
 
-void loadDiets(const char* "C:\Users\gram\Documents\SMHealthcare\diets.txt") {
-    FILE *file = fopen("C:\Users\gram\Documents\SMHealthcare\diets.txt", "r");
+void loadDiets(const char* DIETFILEPATH) {
+    FILE *file = fopen(DIETFILEPATH, "r");
     if (file == NULL) {
         printf("There is no file for diets! \n");
         return;
     }
 
      // ToCode: to read a list of the diets from the given file
-    while (fscanf(file, "%s %d", diet_list[diet_list_size].food_name, &diet_list[diet_list_size]calories_intake==2)) {
+    while (fscanf(file, "%s %d", diet_list[diet_list_size].food_name, &diet_list[diet_list_size].calories_intake)==2) {
+    	
+    	diet_list_size++;
     	
         if (diet_list_size >= MAX_DIETS){
         	break;
