@@ -37,7 +37,7 @@ void loadDiets(const char* DIETFILEPATH) {
     }
 
      // ToCode: to read a list of the diets from the given file
-    while (fscanf(file, "%s %d", diet_list[diet_list_size].food_name, &diet_list[diet_list_size].calories_intake)==2) 
+    while (fscanf(file, "%s %d", diet_list[diet_list_size].food_name, &diet_list[diet_list_size].calories_intake)!=EOF) 
 	{
     	
     	diet_list_size++;
@@ -95,7 +95,6 @@ void inputDiet(HealthData* health_data)
     else if(choice<1||choice>diet_list_size+1)
     {
 		printf("[Error] \nInvalid option. \n");
-        printf("Please try again! \n");
         
         return;
 	}

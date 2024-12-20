@@ -71,14 +71,14 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 
 void printHealthData(const HealthData* health_data) {
 	int i;
-	int remaining_calories=health_data->total_calories_intake-health_data->total_calories_burned-1300;
+	int remaining_calories=health_data->total_calories_intake-health_data->total_calories_burned-1300; //remaining calories
 	
 	// ToCode: to print out the saved history of exercises
 	printf("=========================== History of Exercise =======================\n");
 	
 	for(i=0;i<health_data->exercise_count;i++)
 	{
-		printf("%d. %s - calories burned: %d kcal\n", i+1, health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute);
+		printf("Exercise: %s - calories burned: %d kcal\n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute);
 	
 	}
 	
@@ -89,7 +89,7 @@ void printHealthData(const HealthData* health_data) {
 	
 	for(i=0;i<health_data->diet_count;i++)
 	{
-		printf("%d. %s - calories intake: %d kcal\n", i+1, health_data->diet[i].food_name,health_data->diet[i].calories_intake);
+		printf("Food: %s - calories intake: %d kcal\n", health_data->diet[i].food_name,health_data->diet[i].calories_intake);
 	}
 
     printf("=======================================================================\n");
@@ -107,19 +107,22 @@ void printHealthData(const HealthData* health_data) {
     printf("=======================================================================\n \n");
 	
 	// ToCode: to print out the recommendtaion depending on the current total calories burned and intake    
+	//Shut down the system if the remaining calories are zero
 	
 	if(remaining_calories==0)
 	{
 		printf("You have consumed all you caloies for today!\n");
-		saveData("C:\\Users\\gram\\Documents\\SMHealthcare\\health_data.txt", health_data);
+		saveData("C:\\Users\\gram\\Documents\\SMHealthcare\\health_data.txt", health_data);	//Save when termination conditions are reached
 		exit(0);
 	}
+	
+	//Output recommendations if the remaining calories are not zero
 	
 	else if(remaining_calories<0)
 	{
 		printf("[Warning]Too few calories!\n");
 		
-		if(health_data->total_calories_intake==2000)
+		if(health_data->total_calories_intake==2000)		// 
 			printf("Your total calorie intake for today has reached your goal!\n");
 		else if(health_data->total_calories_intake<2000)
 			printf("Your total calorie intake for today has not reached your goal, remember to eat more!!\n");

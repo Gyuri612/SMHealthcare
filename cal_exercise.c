@@ -34,7 +34,7 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     }
 
     // ToCode: to read a list of the exercises from the given file
-    while (fscanf(file, "%s %d", exercise_list[exercise_list_size].exercise_name, &exercise_list[exercise_list_size].calories_burned_per_minute)==2) 
+    while (fscanf(file, "%s %d", exercise_list[exercise_list_size].exercise_name, &exercise_list[exercise_list_size].calories_burned_per_minute)!=EOF) 
 	{
     	exercise_list_size++;
     	
@@ -87,12 +87,10 @@ void inputExercise(HealthData* health_data) {
     else if(choice<1||choice>exercise_list_size+1)
     {
 		printf("[Error] \nInvalid option. \n");
-        printf("Please try again! \n");
         
         return;
 	}
  
-    
     // To enter the duration of the exercise
     
 	else //choice==1~exercise_list_size+1
@@ -109,7 +107,7 @@ void inputExercise(HealthData* health_data) {
 	Exercise selected_exercise=exercise_list[choice-1];		//selected_exercise={"exercise_name",calories_burned_per_minute}
 	
 	health_data->exercises[health_data->exercise_count]=selected_exercise;	//health_data->exercise[choice-1]={"exercise_name",calories_burned_per_minute}
-	health_data->exercises[health_data->exercise_count].calories_burned_per_minute = calories_burned; //Overwrite
+	health_data->exercises[health_data->exercise_count].calories_burned_per_minute = calories_burned; //Overwrite with calories_burned
 	health_data->exercise_count++;								//Increase the number of exercises intaked by 1
 	health_data->total_calories_burned+=calories_burned;
     

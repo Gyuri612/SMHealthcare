@@ -1,13 +1,9 @@
 [Exercises] 
-1. riding - calories burned: 595 kcal
 
 [Diets] 
-1. chicken - calories intake: 925 kcal
-2. pizza - calories intake: 900 kcal
-3. salad - calories intake: 70 kcal
 
 [Total] 
 Basal Metabolic Rate: 1300 kcal
-Total calories burned: 595 kcal
-Total calories intake: 1895 kcal
-The remaining calories: 0 kcal
+Total calories burned: 0 kcal
+Total calories intake: 0 kcal
+The remaining calories: -1300 kcal

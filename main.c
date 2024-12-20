@@ -29,6 +29,9 @@ int main() {
 
     // ToCode: to run the "Healthcare Management Systems" until all calories are used up or the user wants to exit the system
     do {
+    	
+    	saveData("C:\\Users\\gram\\Documents\\SMHealthcare\\health_data.txt", &health_data);	//Back up every time the program works
+    	
     	if (health_data.total_calories_intake-health_data.total_calories_burned-BASAL_METABOLIC_RATE>=DAILY_CALORIE_GOAL) 
 		{
             printf("You have consumed all your calories for today! \n");
@@ -65,7 +68,7 @@ int main() {
                 
             case 4:
             	
-            	saveData("C:\\Users\\gram\\Documents\\SMHealthcare\\health_data.txt", &health_data);
+            	saveData("C:\\Users\\gram\\Documents\\SMHealthcare\\health_data.txt", &health_data);	//Save when termination conditions are reached
     			printf("Exit the system.\n");
     			printf("=======================================================================\n");
                 break;
@@ -73,6 +76,7 @@ int main() {
             default:
                 printf("[Error] Invalid option. \n");
                 printf("Please try again! \n");
+            
         }
     } while (choice!=4);
 
