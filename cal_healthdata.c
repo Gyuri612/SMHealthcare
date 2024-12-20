@@ -26,6 +26,8 @@
 
 void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 	int i;
+	int remaining_calories=health_data->total_calories_intake-health_data->total_calories_burned-1300;
+	
     FILE* file = fopen(HEALTHFILEPATH, "w");
     if (file == NULL) {
         printf("There is no file for health data.\n");
@@ -34,17 +36,27 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 
     // ToCode: to save the chosen exercise and total calories burned 
     fprintf(file, "[Exercises] \n");
-    
+    for(i=0;i<health_data->exercise_count;i++)
+    {
+    	fprintf(file, "%d. %s - calories burned: %d kcal\n", i+1, health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute);
+	}
     
     // ToCode: to save the chosen diet and total calories intake 
     fprintf(file, "\n[Diets] \n");
-
+	for (i=0;i<health_data->diet_count;i++)
+	{
+		fprintf(file, "%d. %s - calories intake: %d kcal\n", i+1, health_data->diet[i].food_name,health_data->diet[i].calories_intake);
+	}
 
 
     // ToCode: to save the total remaining calrories
     fprintf(file, "\n[Total] \n");
+    fprintf(file, "Basal Metabolic Rate: 1300 kcal\n");
+ 	fprintf(file, "Total calories burned: %i kcal\n",health_data->total_calories_burned);
+ 	fprintf(file, "Total calories intake: %i kcal\n",health_data->total_calories_intake);
+ 	fprintf(file, "The remaining calories: %i kcal\n", remaining_calories);
     
-    
+    fclose(file);
 }
 
 /*
@@ -99,6 +111,7 @@ void printHealthData(const HealthData* health_data) {
 	if(remaining_calories==0)
 	{
 		printf("You have consumed all you caloies for today!\n");
+		saveData("C:\\Users\\gram\\Documents\\SMHealthcare\\health_data.txt", health_data);
 		exit(0);
 	}
 	

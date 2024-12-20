@@ -65,6 +65,7 @@ int main() {
                 
             case 4:
             	
+            	saveData("C:\\Users\\gram\\Documents\\SMHealthcare\\health_data.txt", &health_data);
     			printf("Exit the system.\n");
     			printf("=======================================================================\n");
                 break;
