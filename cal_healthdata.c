@@ -59,6 +59,7 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 
 void printHealthData(const HealthData* health_data) {
 	int i;
+	int total_calories;
 	
 	// ToCode: to print out the saved history of exercises
 	printf("=========================== History of Exercise =======================\n");
@@ -76,13 +77,27 @@ void printHealthData(const HealthData* health_data) {
 	// ToCode: to print out the saved history of calories including basal metabolic rate, 
 	// total calories burned, total calories intake, and the remaining calories
 	printf("============================== Total Calories =========================\n");
- 
+ 	
+ 	printf("Basal Metabolic Rate: 1300 kcal");
+ 	printf("Total calories burned: %i kcal", total_calories_intake);
  
     printf("=======================================================================\n \n");
-    
 	
 	// ToCode: to print out the recommendtaion depending on the current total calories burned and intake    
-    
+	
+	if(total_calories==130)
+	{
+		printf("You have consumed all you caloies for today!");
+		exit(0);
+	}
+	
+	else if(total_calories<0)
+	{
+		printf("[Warning]Too few calories!");
+		
+		if
+	}
+	
     
 	 printf("=======================================================================\n");
 }

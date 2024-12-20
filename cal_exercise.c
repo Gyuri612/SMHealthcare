@@ -61,8 +61,10 @@ void inputExercise(HealthData* health_data) {
     int choice, duration, i;
     
     // ToCode: to provide the options for the exercises to be selected
-    printf("The list of exercises: \n");
-    for(i=0;i<=exercise_list_size;i++)
+    
+	printf("The list of exercises: \n");
+    
+	for(i=0;i<=exercise_list_size;i++)
     {	
     	if(i!=exercise_list_size)
     		printf("%d. %s (%d kcal burned per min.)\n", i+1, exercise_list[i].exercise_name, exercise_list[i].calories_burned_per_minute);
@@ -72,19 +74,43 @@ void inputExercise(HealthData* health_data) {
 	}
 
     // ToCode: to enter the exercise to be chosen with exit option
-	printf("Choose (1-%i)\n",exercise_list_size+1);
+	
+	printf("Choose (1-%i):",exercise_list_size+1);
     scanf("%i",&choice);
+    
+    if(choice==exercise_list_size+1)
+    {
+    	printf("Exiting exercise selection. \n");
+    	return;
+	}
+    
+    else if(choice<1||choice>exercise_list_size+1)
+    {
+		printf("[Error] \nInvalid option. \n");
+        printf("Please try again! \n");
+        
+        return;
+	}
  
     
     // To enter the duration of the exercise
-    if(choice!=exercise_list_size+1)
+    
+	else //choice==1~exercise_list_size+1
     {	
 		printf("Enter the duration of the exercise (in min.): ");
     	scanf("%d", &duration);
 	}
 	
-
+	// choice*duration=total calories
+	int calories_burned = exercise_list[choice-1].calories_burned_per_minute * duration;
+	
     // ToCode: to enter the selected exercise and total calcories burned in the health data
     
-
+	Exercise selected_exercise=exercise_list[choice-1];		//selected_exercise={"exercise_name",calories_burned_per_minute}
+	
+	health_data->exercises[health_data->exercise_count]=selected_exercise;	//health_data->exercise[choice-1]={"exercise_name",calories_burned_per_minute}
+	health_data->exercises[health_data->exercise_count].calories_burned_per_minute = calories_burned; //Overwrite
+	health_data->exercise_count++;								//Increase the number of exercises intaked by 1
+	health_data->total_calories_burned+=calories_burned;
+    
 }
